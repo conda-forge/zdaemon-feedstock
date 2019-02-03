@@ -1,8 +1,8 @@
 {% set name = "zdaemon" %}
-{% set version = "4.2.0" %}
+{% set version = "4.3" %}
 {% set bundle = "tar.gz" %}
 {% set hash_type = "sha256" %}
-{% set hash = "ee7b118069e7e6a5ea93df8aabaa0b6549dff4414fda259d0efc036c5c73e1bf" %}
+{% set hash = "f249fc6885646d165d7d6b228a7b71f5170fc7117de9e0688271f8fb97840f72" %}
 {% set build = 1000 %}
 
 package:
