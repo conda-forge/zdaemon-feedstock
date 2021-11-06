@@ -2,7 +2,7 @@
 {% set version = "4.3" %}
 {% set bundle = "tar.gz" %}
 {% set hash = "f249fc6885646d165d7d6b228a7b71f5170fc7117de9e0688271f8fb97840f72" %}
-{% set build = 1002 %}
+{% set build = 1003 %}
 
 package:
   name: {{ name|lower }}
@@ -22,7 +22,7 @@ build:
   script: python setup.py install --single-version-externally-managed --record=record.txt
 
 requirements:
-  build:
+  host:
     - python
     - setuptools
 
