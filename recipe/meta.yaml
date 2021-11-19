@@ -1,33 +1,28 @@
 {% set name = "zdaemon" %}
 {% set version = "4.3" %}
-{% set bundle = "tar.gz" %}
-{% set hash = "f249fc6885646d165d7d6b228a7b71f5170fc7117de9e0688271f8fb97840f72" %}
-{% set build = 1002 %}
+
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.{{ bundle }}
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ bundle }}
-  sha256: {{ hash }}
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/zdaemon-{{ version }}.tar.gz
+  sha256: f249fc6885646d165d7d6b228a7b71f5170fc7117de9e0688271f8fb97840f72
 
 build:
-  preserve_egg_dir: True
+  number: 1003
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
   entry_points:
     - zdaemon=zdaemon.zdctl:main
 
-  number: {{ build }}
-  script: python setup.py install --single-version-externally-managed --record=record.txt
-
 requirements:
-  build:
-    - python
-    - setuptools
-
+  host:
+    - python >=3.6
+    - pip
   run:
-    - python
+    - python >=3.6
     - setuptools
     - zconfig
 
@@ -35,9 +30,17 @@ test:
   imports:
     - zdaemon
     - zdaemon.tests
-
   commands:
     - zdaemon --help
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://github.com/zopefoundation/zdaemon
+  summary: Daemon process control library and tools for Unix-based systems
+  license: ZPL-2.1
+  license_file: COPYRIGHT.txt
 
 about:
   home: https://github.com/zopefoundation/zdaemon
